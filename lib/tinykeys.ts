@@ -1,8 +1,6 @@
 // forked from https://github.com/jamiebuilds/tinykeys
 // to fix navigator not being defined in SSR context
 
-/* (license information remains unchanged) */
-
 type KeyBindingPress = [string[], string]
 
 export interface KeyBindingMap {
@@ -21,8 +19,8 @@ let inputs = ['select', 'textarea', 'input']
  * Parses a "Key Binding String" into its parts
  */
 function parse(str: string): KeyBindingPress[] {
-  // Ensure we are in a client-side context before accessing `navigator`
   let MOD = 'Control'
+
   if (
     typeof window !== 'undefined' &&
     typeof navigator !== 'undefined' &&
@@ -31,16 +29,15 @@ function parse(str: string): KeyBindingPress[] {
     MOD = 'Meta'
   }
 
+  // Avoid errors by filtering out empty strings before mapping
   return str
     .trim()
     .split(' ')
-    .filter(press => press) // Filter out any undefined or empty strings
+    .filter(press => press && typeof press === 'string') // Ensuring each press is a valid non-empty string
     .map(press => {
-      let mods = press.split('+')
+      let mods = press.split('+').filter(mod => mod && typeof mod === 'string') // Ensure mods are valid strings
       let key = mods.pop() as string
-      if (mods && Array.isArray(mods)) {
-        mods = mods.map(mod => (mod === '$mod' ? MOD : mod))
-      }
+      mods = mods.map(mod => (mod === '$mod' ? MOD : mod))
       return [mods, key]
     })
 }
@@ -72,9 +69,15 @@ export default function keybindings(
     return () => {}
   }
 
-  let keyBindings = Object.keys(keyBindingMap).map(key => {
-    return [parse(key), keyBindingMap[key]] as const
-  })
+  let keyBindings = Object.keys(keyBindingMap)
+    .map(key => {
+      const parsed = parse(key)
+      if (parsed.length > 0) {
+        return [parsed, keyBindingMap[key]] as const
+      }
+      return null
+    })
+    .filter(binding => binding !== null) // Filter out any null bindings
 
   let possibleMatches = new Map<KeyBindingPress[], KeyBindingPress[]>()
   let timer: any = null
@@ -96,12 +99,16 @@ export default function keybindings(
     }
 
     keyBindings.forEach(keyBinding => {
+      if (!keyBinding) return // Ignore null bindings
+
       let sequence = keyBinding[0]
       let callback = keyBinding[1]
 
       let prev = possibleMatches.get(sequence)
       let remainingExpectedPresses = prev ? prev : sequence
       let currentExpectedPress = remainingExpectedPresses[0]
+
+      if (!currentExpectedPress) return
 
       let matches = match(event, currentExpectedPress)
 
