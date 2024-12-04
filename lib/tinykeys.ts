@@ -24,6 +24,7 @@ function parse(str: string): KeyBindingPress[] {
   // Ensure we are in a client-side context before accessing `navigator`
   let MOD = 'Control'
   if (
+    typeof window !== 'undefined' &&
     typeof navigator !== 'undefined' &&
     /Mac|iPod|iPhone|iPad/.test(navigator.platform)
   ) {
@@ -33,14 +34,21 @@ function parse(str: string): KeyBindingPress[] {
   return str
     .trim()
     .split(' ')
+    .filter(press => press) // Filter out any undefined or empty strings
     .map(press => {
       let mods = press.split('+')
       let key = mods.pop() as string
-      mods = mods.map(mod => (mod === '$mod' ? MOD : mod))
+      if (mods && Array.isArray(mods)) {
+        mods = mods.map(mod => (mod === '$mod' ? MOD : mod))
+      }
       return [mods, key]
     })
 }
 
+/**
+ * This tells us if a series of events matches a key binding sequence either
+ * partially or exactly.
+ */
 function match(event: KeyboardEvent, press: KeyBindingPress): boolean {
   return !(
     (press[1].toUpperCase() !== event.key.toUpperCase() &&
@@ -59,6 +67,11 @@ export default function keybindings(
   keyBindingMap: KeyBindingMap,
   options: Options = {}
 ) {
+  if (typeof window === 'undefined') {
+    // If we are in an SSR context, do nothing
+    return () => {}
+  }
+
   let keyBindings = Object.keys(keyBindingMap).map(key => {
     return [parse(key), keyBindingMap[key]] as const
   })
