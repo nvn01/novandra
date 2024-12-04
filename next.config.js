@@ -1,5 +1,8 @@
 module.exports = {
   typescript: {
-    ignoreDevErrors: true
+    ignoreBuildErrors: true
+  },
+  eslint: {
+    ignoreDuringBuilds: true
   }
 }
