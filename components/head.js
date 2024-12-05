@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 const BASE_URL = `https://novandra.vercel.app`
 const defaultOgImage =
-  'https://res.cloudinary.com/dsdlhtnpw/image/upload/v1572673557/og-image_budbm8.png'
+  'https://res.cloudinary.com/do88fwqec/image/upload/v1733386910/og-image.png'
 const useCurrentPath = () => useRouter().asPath.split('?')[0]
 
 const Head = ({
