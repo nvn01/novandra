@@ -2,14 +2,14 @@ import NextHead from 'next/head'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 
-const BASE_URL = `https://paco.sh`
+const BASE_URL = `https://novandra.vercel.app`
 const defaultOgImage =
   'https://res.cloudinary.com/dsdlhtnpw/image/upload/v1572673557/og-image_budbm8.png'
 const useCurrentPath = () => useRouter().asPath.split('?')[0]
 
 const Head = ({
   title = 'Novandra Anugrah',
-  description = "Hi, I'm Paco. Frontend developer and designer.",
+  description = "Hi, I'm Novandra Anugrah, a computer science student and tech enthusiast.",
   image = defaultOgImage,
   children
 }) => {
@@ -40,14 +40,14 @@ const Head = ({
       <meta name="og:image" content={image} />
 
       {/* URL */}
-      <meta name="og:url" content="https://paco.sh" />
+      <meta name="og:url" content="https://novandra.vercel.app" />
       <link key="canonical" rel="canonical" href={BASE_URL + path} />
 
       {/* General */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Language" content="en" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@pacocoursey" />
+      <meta name="twitter:site" content="@novandraanugrah" />
       <meta name="apple-mobile-web-app-title" content="Novandra" />
       <meta name="author" content="Novandra Anugrah" />
 
@@ -55,7 +55,7 @@ const Head = ({
       <link
         rel="alternate"
         type="application/rss+xml"
-        title="RSS Feed for paco.sh"
+        title="RSS Feed for novandra.vercel.app"
         href="/feed.xml"
       />
 

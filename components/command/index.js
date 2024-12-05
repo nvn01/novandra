@@ -87,8 +87,7 @@ const CommandMenu = memo(() => {
       'g w': () => router.push('/words'),
       'g i': () => router.push('/ideas'),
       // Social
-      'g t': () => () =>
-        window.open('https://twitter.com/pacocoursey', '_blank')
+      'g t': () => window.open('https://x.com/novandraanugrah', '_blank')
     }
   }, [router, setPages])
 
@@ -287,16 +286,14 @@ const DefaultItems = () => {
         <Item
           value="GitHub"
           icon={<GitHub />}
-          callback={() =>
-            window.open('https://github.com/pacocoursey', '_blank')
-          }
+          callback={() => window.open('https://github.com/nvn01', '_blank')}
         />
         <Item
           value="Twitter"
           icon={<Twitter />}
           keybind="g t"
           callback={() =>
-            window.open('https://twitter.com/pacocoursey', '_blank')
+            window.open('https://x.com/novandraanugrah', '_blank')
           }
         />
       </Group>

@@ -76,8 +76,15 @@ const About = () => {
         <section>
           <h2>Connect</h2>
           <p>
-            Reach me at novandraanugrah@gmail.com or follow me on [your social
-            media link].
+            Reach me at{' '}
+            <Link underline href="https://twitter.com/novandraanugrah" external>
+              @novandraanugrah
+            </Link>{' '}
+            or{' '}
+            <a href="mailto:novandraanugrah91@gmail.com">
+              novandraanugrah91@gmail.com
+            </a>
+            .
           </p>
         </section>
       </article>

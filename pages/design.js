@@ -12,7 +12,7 @@ const Design = () => {
   return (
     <Page
       title="Design"
-      description="Collection of beautiful websites and portfolios that I admire."
+      description="A collection of beautiful websites and portfolios that I admire, reflecting my inspiration and design preferences."
     >
       <article>
         {imageItems.map(entry => {

@@ -6,7 +6,7 @@ const Ideas = ({ html }) => {
   return (
     <Page
       title="Ideas"
-      description="Collections of ideas for side projects and blog posts."
+      description="A collection of my personal ideas for side projects and blog posts, aiming to inspire future work."
     >
       <article dangerouslySetInnerHTML={{ __html: html }} />
     </Page>
