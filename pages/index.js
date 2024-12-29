@@ -21,8 +21,8 @@ const About = () => {
             <h3>Building</h3>
             <ul>
               <li>
-                <strong>Project A</strong> - Experimenting with web interfaces
-                and interactions.
+                <strong>Consign Aggregator</strong> - Aggregates consignment
+                posts from Instagram.
               </li>
             </ul>
           </div>
@@ -31,8 +31,12 @@ const About = () => {
             <h3>Projects</h3>
             <ul>
               <li>
-                <Link underline href="https://github.com/your-project" external>
-                  Your GitHub Project ↗
+                <Link
+                  underline
+                  href="https://github.com/nvn01/consign-aggregator"
+                  external
+                >
+                  Consign Aggregator Project ↗
                 </Link>
               </li>
               <li>

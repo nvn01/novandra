@@ -13,9 +13,9 @@
 - [ ] Authenticator app that uses a QR code to transfer from old phone to new phone
 - [ ] Social media sharer
 
-### Blog
+### 2025 Blog
 
-- [ ] The scroll position effect on /blog
+- [ ] Game Theory
 - [ ] Introduction to mechanical keyboards
 - [x] Write it down
 - [ ] Improved Structure Procrastination
