@@ -7,10 +7,12 @@ const About = () => {
         <h1>Novandra Anugrah</h1>
 
         <p>
-          I am passionate about creating elegant, user-friendly websites using
-          the latest frontend technologies. My expertise lies in building
-          scalable design systems and modular UI components that bring
-          creativity to life.
+          I am passionate about crafting elegant, user-friendly websites with
+          modern frontend technologies. Specializing in scalable design systems
+          and modular UI components, I bring creativity to life through
+          seamless, intuitive interfaces. My expertise lies in developing
+          high-performance web experiences that balance aesthetics and
+          functionality.
         </p>
       </article>
     </Page>
