@@ -1,5 +1,7 @@
 import Page from '@components/page'
 import Link from '@components/link'
+import { ArrowUpRight } from '@components/icons'
+
 
 const About = () => {
   return (
@@ -33,10 +35,11 @@ const About = () => {
               <li>
                 <Link
                   underline
-                  href="https://github.com/nvn01/consign-aggregator"
+                  href="https://github.com/nvn01/konsul-pajak-app"
                   external
                 >
-                  konsul-pajak-app ↗
+                  konsul-pajak-app <ArrowUpRight size={14} />
+
                 </Link>
               </li>
               <li>

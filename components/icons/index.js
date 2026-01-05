@@ -22,3 +22,5 @@ export { default as Lightbulb } from './lightbulb'
 export { default as Logo } from './logo'
 export { default as Command } from './command'
 export { default as Sparkles } from './sparkles'
+export { default as ArrowUpRight } from './arrow-up-right'
+
