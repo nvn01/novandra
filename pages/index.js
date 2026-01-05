@@ -21,8 +21,8 @@ const About = () => {
             <h3>Building</h3>
             <ul>
               <li>
-                <strong>Consign Aggregator</strong> - Aggregates consignment
-                posts from Instagram.
+                <strong>Konsul Pajak App</strong> - Using RAG to answer tax
+                questions.
               </li>
             </ul>
           </div>
@@ -36,7 +36,7 @@ const About = () => {
                   href="https://github.com/nvn01/consign-aggregator"
                   external
                 >
-                  Consign Aggregator Project ↗
+                  konsul-pajak-app ↗
                 </Link>
               </li>
               <li>
