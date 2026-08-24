@@ -8,7 +8,13 @@ const Ideas = ({ html }) => {
       title="Ideas"
       description="A collection of my personal ideas for side projects and blog posts, aiming to inspire future work."
     >
-      <article dangerouslySetInnerHTML={{ __html: html }} />
+      <article>
+        <p>
+          Paco&apos;s original ideas remain below. New Novandra projects will be
+          appended without removing this archive.
+        </p>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </article>
     </Page>
   )
 }

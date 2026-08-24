@@ -1,0 +1,77 @@
+{
+  "featured": [
+    {
+      "title": "Tanya Pajak AI",
+      "description": "RAG-powered Indonesian tax information and natural-language calculator, evaluated with tax experts and published in JOAIIA.",
+      "href": "https://tanyapajakai.com/chat",
+      "repo": "https://github.com/nvn01/konsul-pajak-app",
+      "image": "https://opengraph.githubassets.com/novandra-portfolio/nvn01/konsul-pajak-app",
+      "status": "Live",
+      "owner": "novandra"
+    },
+    {
+      "title": "RECON",
+      "description": "A searchable discovery feed that collects and normalizes second-hand technology listings from multiple public sources.",
+      "href": "https://recon.app-pixel.com",
+      "repo": "https://github.com/nvn01/Recon.id",
+      "image": "https://opengraph.githubassets.com/novandra-portfolio/nvn01/Recon.id",
+      "status": "Live",
+      "owner": "novandra"
+    },
+    {
+      "title": "Bubbles IDX",
+      "description": "A live bubble-chart visualizer for scanning price movements across the Indonesian stock market.",
+      "href": "https://bubblesidx.app-pixel.com",
+      "repo": "https://github.com/nvn01/bubbles-idx",
+      "image": "https://opengraph.githubassets.com/novandra-portfolio/nvn01/bubbles-idx",
+      "status": "Live",
+      "owner": "novandra"
+    },
+    {
+      "title": "Drop as Sticker",
+      "description": "A focused Chromium extension that routes an image drop into WhatsApp Web's native sticker editor without collecting user data.",
+      "href": "https://github.com/nvn01/drag-and-drop-whatsapp-sticker-web-extension",
+      "image": null,
+      "status": "Open source",
+      "owner": "novandra"
+    }
+  ],
+  "supporting": [
+    {
+      "title": "Automated Bitcoin Dataset",
+      "description": "A scheduled Python and GitHub Actions pipeline that updates four Bitcoin market timeframes on Kaggle every day.",
+      "href": "https://github.com/nvn01/bitcoin-dataset-kaggle-auto-updater",
+      "type": "Data pipeline"
+    },
+    {
+      "title": "XAUUSD Historical Data",
+      "description": "MQL4 and Python tooling for collecting and publishing multi-timeframe gold-price history.",
+      "href": "https://github.com/nvn01/MQL4-Script-fetching-XAUUSD-price-history",
+      "type": "Dataset tooling"
+    },
+    {
+      "title": "Personal Homelab",
+      "description": "A practical environment for Proxmox, Linux virtual machines, containers, networking, and production services.",
+      "href": "https://github.com/nvn01/homelab",
+      "type": "Infrastructure"
+    },
+    {
+      "title": "Koperasi Mobile Application",
+      "description": "A React Native and Expo prototype for member services at KSPPS BMT Fatihul Barokah, developed during a three-person internship.",
+      "href": "https://github.com/nvn01/koperasi-fatihul-barokah-mobile-app",
+      "type": "Earlier work"
+    },
+    {
+      "title": "IoT RFID Attendance",
+      "description": "An early cloud-connected attendance project using RFID identity cards and AWS services.",
+      "href": "https://github.com/nvn01/IoTFrontend1",
+      "type": "Earlier work"
+    },
+    {
+      "title": "Beautiful Design Lab",
+      "description": "An experimental collection of original websites exploring different brands, layouts, interactions, and AI-assisted workflows.",
+      "href": "https://github.com/nvn01/beautiful-design-lab",
+      "type": "Design lab"
+    }
+  ]
+}

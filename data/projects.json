@@ -1,0 +1,20 @@
+{
+  "githubOwner": "nvn01",
+  "buildingTopic": "portfolio-building",
+  "buildingLimit": 2,
+  "projects": [
+    {
+      "repo": "Recon.id",
+      "title": "RECON",
+      "description": "Finds second-hand technology across public platforms.",
+      "homepage": "https://recon.app-pixel.com",
+      "status": "building"
+    },
+    {
+      "repo": "drag-and-drop-whatsapp-sticker-web-extension",
+      "title": "Drop as Sticker",
+      "description": "Turns image drops into WhatsApp Web stickers.",
+      "status": "building"
+    }
+  ]
+}

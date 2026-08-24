@@ -1,0 +1,17 @@
+{
+  "name": "Novandra Anugrah",
+  "location": "Tangerang Selatan, Indonesia",
+  "headline": "I build software that turns scattered data into useful products.",
+  "summary": "Final-year Computer Science student working across backend systems, applied AI, data collection, and self-hosted infrastructure.",
+  "now": [
+    "Building and maintaining data-intensive products, including RECON, Tanya Pajak AI, and Bubbles IDX.",
+    "Exploring reliable data ingestion, useful AI interfaces, and the infrastructure required to run software beyond a local machine."
+  ],
+  "links": {
+    "github": "https://github.com/nvn01",
+    "linkedin": "https://id.linkedin.com/in/novandra-anugrah-b55500211",
+    "kaggle": "https://www.kaggle.com/novandraanugrah",
+    "twitter": "https://x.com/novandraanugrah",
+    "email": "novandraanugrah91@gmail.com"
+  }
+}

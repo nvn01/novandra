@@ -6,8 +6,15 @@ import { data as items } from '@data/music.json'
 
 const Music = () => {
   return (
-    <Page title="Music" description="Collection of exemplary electronic music.">
+    <Page
+      title="Music"
+      description="Original Paco template music collection, preserved during the portfolio rebuild."
+    >
       <article>
+        <p>
+          Original Paco template collection, preserved while my personal music
+          archive is added.
+        </p>
         {items.map(entry => {
           return (
             <Entry

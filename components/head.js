@@ -9,11 +9,11 @@ const useCurrentPath = () => useRouter().asPath.split('?')[0]
 
 const Head = ({
   title = 'Novandra Anugrah',
-  description = "Hi, I'm Novandra Anugrah, a computer science student and tech enthusiast.",
+  description = 'Novandra Anugrah builds software that turns scattered data into useful products across backend systems, applied AI, and infrastructure.',
   image = defaultOgImage,
   children
 }) => {
-  const { systemTheme } = useTheme()
+  const { resolvedTheme } = useTheme()
   const path = useCurrentPath()
 
   return (
@@ -70,7 +70,7 @@ const Head = ({
       />
 
       {/* Dynamic favicon */}
-      {!systemTheme || systemTheme === 'dark' ? (
+      {!resolvedTheme || resolvedTheme === 'dark' ? (
         <>
           <link
             rel="alternate icon"

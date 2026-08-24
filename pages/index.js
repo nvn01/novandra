@@ -1,47 +1,67 @@
 import Page from '@components/page'
 import Link from '@components/link'
 import { ArrowUpRight } from '@components/icons'
+import { getBuildingProjects } from '@lib/github'
+import profile from '@data/profile.json'
+import portfolio from '@data/portfolio.json'
+import publications from '@data/publications.json'
 
+const About = ({ buildingProjects }) => {
+  const featuredProjects = portfolio.featured.slice(0, 3)
+  const featuredPublication = publications.data[0]
 
-const About = () => {
   return (
-    <Page description="Hi, I'm Novandra Anugrah. Computer science student, developer, and tech enthusiast.">
+    <Page description={`${profile.headline} ${profile.summary}`}>
       <article>
-        <h1>Novandra Anugrah</h1>
+        <h1>{profile.name}</h1>
 
         <p>
-          <em>Crafting experiences.</em> Exploring creativity through code and
-          design.
+          <em>{profile.headline}</em>
         </p>
-        <p>
-          Currently a Computer Science student aspiring to work on impactful
-          tech projects.
-        </p>
+        <p>{profile.summary}</p>
 
         <section className="content-grid">
           <div className="column">
-            <h3>Building</h3>
+            <h2>Building</h2>
             <ul>
-              <li>
-                <strong>Konsul Pajak App</strong> - Using RAG to answer tax
-                questions.
-              </li>
+              {buildingProjects.map(project => (
+                <li key={project.repo}>
+                  <Link underline href={project.url} external>
+                    <span className="external-link-label">
+                      <strong>{project.title}</strong>
+                      <ArrowUpRight size={13} />
+                    </span>
+                  </Link>{' '}
+                  - {project.description}
+                  {project.updatedAt && (
+                    <span className="project-meta">
+                      Updated{' '}
+                      {new Date(project.updatedAt).toLocaleDateString('en', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric',
+                        timeZone: 'UTC'
+                      })}
+                    </span>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="column">
-            <h3>Projects</h3>
+            <h2>Projects</h2>
             <ul>
-              <li>
-                <Link
-                  underline
-                  href="https://github.com/nvn01/konsul-pajak-app"
-                  external
-                >
-                  konsul-pajak-app <ArrowUpRight size={14} />
-
-                </Link>
-              </li>
+              {featuredProjects.map(project => (
+                <li key={project.title}>
+                  <Link underline href={project.href} external>
+                    <span className="external-link-label">
+                      {project.title}
+                      <ArrowUpRight size={13} />
+                    </span>
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link underline href="/projects">
                   More Projects
@@ -51,16 +71,24 @@ const About = () => {
           </div>
 
           <div className="column">
-            <h3>Writing</h3>
+            <h2>Writing</h2>
             <ul>
               <li>
-                <Link underline href="/blog/react-hooks">
-                  Exploring React Hooks
+                <Link underline href={featuredPublication.url} external>
+                  <span className="external-link-label">
+                    Tanya Pajak AI Research
+                    <ArrowUpRight size={13} />
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link underline href="/publications">
+                  Publications
                 </Link>
               </li>
               <li>
                 <Link underline href="/blog">
-                  All Writing
+                  Template Writing Archive
                 </Link>
               </li>
             </ul>
@@ -69,14 +97,20 @@ const About = () => {
 
         <section>
           <h2>Now</h2>
+          {profile.now.map(item => (
+            <p key={item}>{item}</p>
+          ))}
+        </section>
+
+        <section>
+          <h2>About</h2>
           <p>
-            Currently learning new technologies, developing coding skills, and
-            exploring design. Striving to bring creativity into each project I
-            work on.
-          </p>
-          <p>
-            Enjoying the challenge of building efficient and clean user
-            experiences while having fun with side projects.
+            My work sits between backend engineering, retrieval systems, data
+            ingestion, and infrastructure. Read the longer story on the{' '}
+            <Link underline href="/about">
+              about page
+            </Link>
+            .
           </p>
         </section>
 
@@ -84,14 +118,11 @@ const About = () => {
           <h2>Connect</h2>
           <p>
             Reach me at{' '}
-            <Link underline href="https://twitter.com/novandraanugrah" external>
+            <Link underline href={profile.links.twitter} external>
               @novandraanugrah
             </Link>{' '}
             or{' '}
-            <a href="mailto:novandraanugrah91@gmail.com">
-              novandraanugrah91@gmail.com
-            </a>
-            .
+            <a href={`mailto:${profile.links.email}`}>{profile.links.email}</a>.
           </p>
         </section>
       </article>
@@ -123,9 +154,33 @@ const About = () => {
           margin-bottom: 1rem;
           font-size: 0.9rem;
         }
+        .project-meta {
+          display: block;
+          margin-top: 0.25rem;
+          color: var(--gray);
+          font-size: 0.75rem;
+          letter-spacing: 0;
+        }
+        .external-link-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.2rem;
+          white-space: nowrap;
+        }
+        .external-link-label :global(svg) {
+          flex: none;
+          color: var(--gray);
+        }
       `}</style>
     </Page>
   )
 }
+
+export const getStaticProps = async () => ({
+  props: {
+    buildingProjects: await getBuildingProjects()
+  },
+  revalidate: 3600
+})
 
 export default About

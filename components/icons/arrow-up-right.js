@@ -1,5 +1,21 @@
-import Icon from '@components/icon'
+const ArrowUpRight = ({ size = 14 }) => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 16 16"
+    width={size}
+    height={size}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4 12L12 4M6 4h6v6"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
 
-const ArrowUpRight = `<path d="M7 17L17 7M7 7h10v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-
-export default Icon(ArrowUpRight)
+export default ArrowUpRight

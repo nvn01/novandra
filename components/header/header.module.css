@@ -26,6 +26,7 @@
 
 .logo {
   margin-right: var(--gap-half);
+  color: var(--fg);
 }
 
 .nav {

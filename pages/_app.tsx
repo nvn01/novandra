@@ -4,6 +4,9 @@ import App from 'next/app'
 import nprogress from 'nprogress'
 import debounce from 'lodash.debounce'
 
+import '@fontsource-variable/geist'
+import '@fontsource/newsreader/400-italic'
+
 // Only show nprogress after 500ms (slow loading)
 const start = debounce(nprogress.start, 500)
 Router.events.on('routeChangeStart', start)

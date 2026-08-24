@@ -16,8 +16,12 @@
   --inline-radius: 5px;
 
   /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --font-sans: 'Geist Variable', 'Inter', -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    sans-serif;
+  --font-serif: 'Newsreader', Georgia, Times New Roman, serif;
   --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo',
     monospace;
 
@@ -110,13 +114,15 @@ h4,
 h5,
 h6 {
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.75;
 }
 
 h1 {
+  font-family: var(--font-heading);
   font-size: 2.75rem; /* Increased from 2.5rem */
-  font-weight: 600;
+  font-feature-settings: 'calt', 'case', 'kern';
+  font-weight: 500;
   line-height: 1.25;
   letter-spacing: -0.89px;
 }
@@ -146,6 +152,13 @@ blockquote {
   margin: 0;
   padding-left: 1rem;
   border-left: 3px solid var(--light-gray);
+}
+
+em {
+  font-family: var(--font-serif);
+  font-size: 1.0625em;
+  font-style: italic;
+  font-weight: 400;
 }
 
 button {

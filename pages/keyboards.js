@@ -10,6 +10,10 @@ const Keyboards = () => {
       description="Collection of beautiful 60%, 65%, and TKL keyboards."
     >
       <article>
+        <p>
+          Original Paco template collection, preserved while my own collection
+          is added.
+        </p>
         {items.map(entry => {
           return (
             <Entry

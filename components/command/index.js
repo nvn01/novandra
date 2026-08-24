@@ -37,6 +37,7 @@ import headerStyles from '@components/header/header.module.css'
 import { useTheme } from 'next-themes'
 import tinykeys from '@lib/tinykeys'
 import postMeta from '@data/blog.json'
+import profile from '@data/profile.json'
 
 const CommandData = React.createContext({})
 const useCommandData = () => React.useContext(CommandData)
@@ -74,8 +75,10 @@ const CommandMenu = memo(() => {
       },
       // Blog
       'g b': () => router.push('/blog'),
+      'g u': () => router.push('/publications'),
       // Navigation
       'g h': () => router.push('/'),
+      'g a': () => router.push('/about'),
       'g c': () => router.push('/contact'),
       // Collections
       'g r': () => router.push('/reading'),
@@ -253,6 +256,7 @@ const DefaultItems = () => {
       />
       <Group title="Blog">
         <Item value="Blog" icon={<Pencil />} keybind="g b" />
+        <Item value="Publications" icon={<Document />} keybind="g u" />
         <Item
           value="Search blog..."
           icon={<Search />}
@@ -279,6 +283,7 @@ const DefaultItems = () => {
 
       <Group title="Navigation">
         <Item value="Home" icon={<ArrowRight />} keybind="g h" />
+        <Item value="About" icon={<ArrowRight />} keybind="g a" />
         <Item value="Contact" icon={<ArrowRight />} keybind="g c" />
       </Group>
 
@@ -286,15 +291,23 @@ const DefaultItems = () => {
         <Item
           value="GitHub"
           icon={<GitHub />}
-          callback={() => window.open('https://github.com/nvn01', '_blank')}
+          callback={() => window.open(profile.links.github, '_blank')}
+        />
+        <Item
+          value="Kaggle"
+          icon={<Document />}
+          callback={() => window.open(profile.links.kaggle, '_blank')}
+        />
+        <Item
+          value="LinkedIn"
+          icon={<Document />}
+          callback={() => window.open(profile.links.linkedin, '_blank')}
         />
         <Item
           value="Twitter"
           icon={<Twitter />}
           keybind="g t"
-          callback={() =>
-            window.open('https://x.com/novandraanugrah', '_blank')
-          }
+          callback={() => window.open(profile.links.twitter, '_blank')}
         />
       </Group>
     </>

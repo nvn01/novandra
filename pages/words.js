@@ -7,7 +7,13 @@ const Words = ({ html }) => {
       title="Words"
       description="Collection of words I read but didn't understand."
     >
-      <article dangerouslySetInnerHTML={{ __html: html }} />
+      <article>
+        <p>
+          Original Paco template collection, preserved while my own notes are
+          added.
+        </p>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </article>
     </Page>
   )
 }

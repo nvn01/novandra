@@ -1,64 +1,66 @@
 import Page from '@components/page'
 import Entry from '@components/entry'
+import TextEntry from '@components/entry/text'
+import Link from '@components/link'
+
+import portfolio from '@data/portfolio.json'
+import templateProjects from '@data/template-projects.json'
 
 const Projects = () => {
   return (
-    <Page title="Projects" description="Collection of past and present work.">
+    <Page
+      title="Projects"
+      description="Selected products, data tools, infrastructure, and earlier work by Novandra Anugrah."
+    >
       <article>
-        <Entry
-          title="Vercel Design"
-          description="The Vercel Design System"
-          image="https://assets.zeit.co/image/upload/q_auto/front/assets/design/geist-card.png"
-          href="https://zeit.co/design"
-        />
+        <p>
+          Products and experiments built around applied AI, data collection,
+          backend systems, and infrastructure.
+        </p>
 
-        <Entry
-          title="Opus"
-          description="Minimal note-taking application"
-          image="https://res.cloudinary.com/dsdlhtnpw/image/upload/v1572672667/opus_ts9o1o.png"
-          href="https://github.com/pacocoursey/opus"
-          position="top"
-        />
+        {portfolio.featured.map(project => (
+          <Entry
+            key={project.title}
+            title={project.title}
+            description={`${project.status} — ${project.description}`}
+            image={project.image}
+            href={project.href}
+            position="top"
+          />
+        ))}
 
-        <Entry
-          title="Dusk"
-          description="Simple application icons"
-          image="https://res.cloudinary.com/dsdlhtnpw/image/upload/v1572672667/dusk_o7qcsa.png"
-          href="https://github.com/pacocoursey/dusk"
-          position="top"
-        />
+        <h2>Data, Infrastructure, and Earlier Work</h2>
+        <ul>
+          {portfolio.supporting.map(project => (
+            <TextEntry
+              key={project.title}
+              title={project.title}
+              description={project.description}
+              type={project.type}
+              href={project.href}
+            />
+          ))}
+        </ul>
 
-        <Entry
-          title="F2PRS"
-          description="Accurate hiscores for RuneScape"
-          image="https://res.cloudinary.com/dsdlhtnpw/image/upload/v1572672667/f2prs_se1f4c.png"
-          href="https://github.com/pacocoursey/f2prs"
-          position="top"
-        />
+        <h2>Paco Template Archive</h2>
+        <p>
+          The original project collection from{' '}
+          <Link underline href={templateProjects.sourceUrl} external>
+            {templateProjects.source}
+          </Link>{' '}
+          is intentionally preserved below while this portfolio is rebuilt.
+        </p>
 
-        <Entry
-          title="Xi"
-          description="Monochrome Atom UI theme"
-          image="https://res.cloudinary.com/dsdlhtnpw/image/upload/v1572672666/xi_xti7x0.png"
-          href="https://github.com/pacocoursey/xi-ui"
-          position="top"
-        />
-
-        <Entry
-          title="EHP"
-          description="Design and Website for EHP"
-          image="https://res.cloudinary.com/dsdlhtnpw/image/upload/v1572672667/ehp_ibfrlz.png"
-          href="https://github.com/pacocoursey/ehp-rs"
-          position="top"
-        />
-
-        <Entry
-          title="Songbird"
-          description="Website for Songbird Healing Studio"
-          image="https://res.cloudinary.com/dsdlhtnpw/image/upload/v1572672667/songbird_sb0kon.png"
-          href="http://songbirdhealingstudio.com/"
-          position="top"
-        />
+        {templateProjects.data.map(project => (
+          <Entry
+            key={project.title}
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            href={project.href}
+            position={project.position}
+          />
+        ))}
       </article>
     </Page>
   )

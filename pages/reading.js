@@ -14,6 +14,10 @@ const Reading = () => {
       description="Collection of articles, blog posts, and videos that I enjoyed."
     >
       <article>
+        <p>
+          Original Paco template collection, preserved while my personal reading
+          archive is added.
+        </p>
         <ul>
           {items.map(entry => {
             return (

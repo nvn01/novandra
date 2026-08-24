@@ -1,4 +1,6 @@
 import Page from '@components/page'
+import Link from '@components/link'
+import profile from '@data/profile.json'
 
 const Contact = () => {
   return (
@@ -8,12 +10,24 @@ const Contact = () => {
 
         <blockquote>
           <a
-            href="mailto:novandraanugrah91@gmail.com?subject=Hello"
+            href={`mailto:${profile.links.email}?subject=Hello`}
             className="reset"
           >
-            novandraanugrah91@gmail.com
+            {profile.links.email}
           </a>
         </blockquote>
+
+        <p>
+          You can also find me on{' '}
+          <Link underline href={profile.links.github} external>
+            GitHub
+          </Link>{' '}
+          and{' '}
+          <Link underline href={profile.links.linkedin} external>
+            LinkedIn
+          </Link>
+          .
+        </p>
       </article>
     </Page>
   )
