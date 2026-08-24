@@ -67,8 +67,35 @@
   color: var(--fg);
 }
 
+.homeNav {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.homeHeader {
+  max-width: 640px;
+  padding: 0;
+}
+
 @media (max-width: 960px) {
   .nav {
     margin: var(--gap-double) 0;
+  }
+
+  .homeNav {
+    top: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .homeHeader {
+    max-width: none;
+    padding: 0 24px;
   }
 }

@@ -8,3 +8,21 @@
   margin: 0 auto;
   padding: 0 var(--gap);
 }
+
+.homeWrapper {
+  position: relative;
+  padding-bottom: 0;
+  overflow-x: hidden;
+}
+
+.homeMain {
+  max-width: 1072px;
+  padding: 128px 0;
+}
+
+@media (max-width: 720px) {
+  .homeMain {
+    max-width: none;
+    padding: 64px 24px;
+  }
+}

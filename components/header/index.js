@@ -5,10 +5,10 @@ import styles from './header.module.css'
 import { Logo as LogoIcon } from '@components/icons'
 import Command from '@components/command'
 
-const Header = ({ title, content }) => {
+const Header = ({ title, content, home = false }) => {
   return (
-    <nav className={styles.nav}>
-      <div className={styles.header}>
+    <nav className={`${styles.nav} ${home ? styles.homeNav : ''}`}>
+      <div className={`${styles.header} ${home ? styles.homeHeader : ''}`}>
         <Link href="/">
           <a aria-label="Navigate Home" className={styles.logo}>
             <LogoIcon />

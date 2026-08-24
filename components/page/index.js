@@ -9,18 +9,23 @@ const Page = ({
   description,
   image,
   showHeaderTitle = true,
+  home = false,
   children
 }) => {
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={`${styles.wrapper} ${home ? styles.homeWrapper : ''}`}
+    >
       <Head
         title={`${title ? `${title} - ` : ''}Novandra Anugrah`}
         description={description}
         image={image}
       />
 
-      {header && <Header title={showHeaderTitle && title} />}
-      <main className={styles.main}>{children}</main>
+      {header && <Header home={home} title={showHeaderTitle && title} />}
+      <main className={`${styles.main} ${home ? styles.homeMain : ''}`}>
+        {children}
+      </main>
     </div>
   )
 }
