@@ -7,6 +7,9 @@ const imagePrefix = `https://res.cloudinary.com/dsdlhtnpw/image/fetch/q_60,w_100
 
 const Entry = ({ title, description, image, href, position }) => {
   const [ref, inView] = useInView({ triggerOnce: true })
+  const resolvedImage = image?.startsWith('/')
+    ? image
+    : `${imagePrefix}/${encodeURIComponent(image)}`
 
   return (
     <a
@@ -22,7 +25,7 @@ const Entry = ({ title, description, image, href, position }) => {
           backgroundImage: image
             ? !inView
               ? 'none'
-              : `url('${imagePrefix}/${encodeURIComponent(image)}')`
+              : `url('${resolvedImage}')`
             : 'none',
           backgroundPosition: position ? position : 'center'
         }}

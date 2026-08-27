@@ -2,23 +2,22 @@ import Page from '@components/page'
 import Entry from '@components/entry'
 
 // Data
-import { data as items } from '@data/music.json'
+import music from '@data/music.json'
+
+const items = music.data
 
 const Music = () => {
   return (
     <Page
       title="Music"
-      description="Original Paco template music collection, preserved during the portfolio rebuild."
+      description="Public Spotify playlists curated by Novandra Anugrah."
     >
       <article>
-        <p>
-          Original Paco template collection, preserved while my personal music
-          archive is added.
-        </p>
+        <p>A small set of public playlists I return to.</p>
         {items.map(entry => {
           return (
             <Entry
-              key={entry.title}
+              key={entry.url}
               title={entry.title}
               image={entry.image}
               href={entry.url}

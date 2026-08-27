@@ -7,7 +7,7 @@ const About = () => {
   return (
     <Page
       title="About"
-      description="About Novandra Anugrah, a software builder focused on backend systems, applied AI, data collection, and infrastructure."
+      description="About Novandra Anugrah, a software builder working across web, mobile, AI, design, data mining, and systems for complex operations."
     >
       <article>
         <p>
@@ -16,17 +16,17 @@ const About = () => {
         <p>{profile.summary}</p>
 
         <p>
-          I am based in {profile.location}. A recurring theme in my work is
-          finding information that is scattered or difficult to use, building a
-          reliable ingestion or retrieval layer around it, and turning it into a
-          product people can understand.
+          I am based in {profile.location}. AI has changed the scale of what one
+          developer can attempt. I am interested in ideas that sit somewhere
+          between a side project, a startup, and “too big”—then turning them
+          into working websites, native software, and complete systems.
         </p>
 
         <h2>Focus</h2>
         <p>
-          Backend engineering, data acquisition and normalization,
-          retrieval-augmented generation, scheduled data pipelines, PostgreSQL,
-          Docker, Linux, and product-oriented frontend development.
+          Web, mobile, AI, digital design, data mining, and end-to-end software
+          systems for complex operational work—from business workflows to
+          integrations with real hardware.
         </p>
 
         <h2>Experience</h2>
@@ -45,6 +45,15 @@ const About = () => {
           Docker, and self-hosted services. It is where I learn what happens
           after an application leaves a laptop: deployment, networking,
           persistence, monitoring, and recovery.
+        </p>
+
+        <h2>{profile.studio.name}</h2>
+        <p>
+          I manage {profile.studio.name}, an independent digital studio with
+          two arms: app-pixel for business software and operational systems,
+          and Repixel for websites and digital design shaped with human taste.
+          Its website is still in development. RECON and Bubbles IDX are
+          independent products presented under its portfolio, not client work.
         </p>
 
         <h2>Elsewhere</h2>

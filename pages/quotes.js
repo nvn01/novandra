@@ -9,10 +9,6 @@ const Quotes = ({ html }) => {
       description="Collection of notable quotes encountered in reading."
     >
       <article>
-        <p>
-          Original Paco template collection, preserved while my personal quotes
-          are added.
-        </p>
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </article>
     </Page>

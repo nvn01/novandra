@@ -5,7 +5,8 @@
       "description": "RAG-powered Indonesian tax information and natural-language calculator, evaluated with tax experts and published in JOAIIA.",
       "href": "https://tanyapajakai.com/chat",
       "repo": "https://github.com/nvn01/konsul-pajak-app",
-      "image": "https://opengraph.githubassets.com/novandra-portfolio/nvn01/konsul-pajak-app",
+      "image": "/projects/tanya-pajak-ai.png",
+      "position": "center 34%",
       "status": "Live",
       "owner": "novandra"
     },
@@ -14,7 +15,8 @@
       "description": "A searchable discovery feed that collects and normalizes second-hand technology listings from multiple public sources.",
       "href": "https://recon.app-pixel.com",
       "repo": "https://github.com/nvn01/Recon.id",
-      "image": "https://opengraph.githubassets.com/novandra-portfolio/nvn01/Recon.id",
+      "image": "/projects/recon.png",
+      "position": "center 18%",
       "status": "Live",
       "owner": "novandra"
     },
@@ -23,16 +25,19 @@
       "description": "A live bubble-chart visualizer for scanning price movements across the Indonesian stock market.",
       "href": "https://bubblesidx.app-pixel.com",
       "repo": "https://github.com/nvn01/bubbles-idx",
-      "image": "https://opengraph.githubassets.com/novandra-portfolio/nvn01/bubbles-idx",
+      "image": "/projects/bubbles-idx.png",
+      "position": "center",
       "status": "Live",
       "owner": "novandra"
     },
     {
       "title": "Drop as Sticker",
       "description": "A focused Chromium extension that routes an image drop into WhatsApp Web's native sticker editor without collecting user data.",
-      "href": "https://github.com/nvn01/drag-and-drop-whatsapp-sticker-web-extension",
-      "image": null,
-      "status": "Open source",
+      "href": "https://chromewebstore.google.com/detail/drop-as-sticker-for-whats/poaemocnjjifhdknnminpidllolajbfn",
+      "repo": "https://github.com/nvn01/drag-and-drop-whatsapp-sticker-web-extension",
+      "image": "/projects/drop-as-sticker.png",
+      "position": "center 44%",
+      "status": "Chrome Web Store",
       "owner": "novandra"
     }
   ],

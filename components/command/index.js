@@ -1,4 +1,11 @@
-import React, { useEffect, useRef, useMemo, useState, memo } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useMemo,
+  useState,
+  memo
+} from 'react'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
 import useDelayedRender from 'use-delayed-render'
@@ -21,7 +28,7 @@ import {
   Search,
   RSS,
   Design,
-  M6,
+  Camera,
   Book,
   Music,
   Document,
@@ -45,13 +52,33 @@ const useCommandData = () => React.useContext(CommandData)
 const CommandMenu = memo(() => {
   const listRef = useRef()
   const commandRef = useRef()
+  const inputRef = useRef()
+  const mobileFocusRef = useRef()
   const router = useRouter()
   const commandProps = useCommand({
     label: 'Site Navigation'
   })
   const [pages, setPages] = usePages(commandProps, ThemeItems)
   const [open, setOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const { search, list } = commandProps
+
+  const isMobileViewport = useCallback(
+    () => window.matchMedia('(max-width: 600px)').matches,
+    []
+  )
+
+  const openCommand = useCallback(() => {
+    setMobileOpen(isMobileViewport())
+    setOpen(true)
+  }, [isMobileViewport])
+
+  const toggleCommand = useCallback(() => {
+    setOpen(current => {
+      if (!current) setMobileOpen(isMobileViewport())
+      return !current
+    })
+  }, [isMobileViewport])
 
   const { mounted, rendered } = useDelayedRender(open, {
     enterDelay: -1,
@@ -71,7 +98,7 @@ const CommandMenu = memo(() => {
     return {
       t: () => {
         setPages([ThemeItems])
-        setOpen(true)
+        openCommand()
       },
       // Blog
       'g b': () => router.push('/blog'),
@@ -83,7 +110,7 @@ const CommandMenu = memo(() => {
       // Collections
       'g r': () => router.push('/reading'),
       'g d': () => router.push('/design'),
-      'g k': () => router.push('/keyboards'),
+      'g f': () => router.push('/analog'),
       'g m': () => router.push('/music'),
       'g p': () => router.push('/projects'),
       'g q': () => router.push('/quotes'),
@@ -92,18 +119,31 @@ const CommandMenu = memo(() => {
       // Social
       'g t': () => window.open('https://x.com/novandraanugrah', '_blank')
     }
-  }, [router, setPages])
+  }, [openCommand, router, setPages])
 
   // Register the keybinds globally
   useEffect(() => {
     const unsubs = [
       tinykeys(window, keymap, { ignoreFocus: true }),
-      tinykeys(window, { '$mod+k': () => setOpen(o => !o) })
+      tinykeys(window, { '$mod+k': toggleCommand })
     ]
     return () => {
       unsubs.forEach(unsub => unsub())
     }
-  }, [keymap])
+  }, [keymap, toggleCommand])
+
+  useEffect(() => {
+    if (!mounted || !mobileOpen) return undefined
+
+    const frame = window.requestAnimationFrame(() => {
+      if (document.activeElement === inputRef.current) {
+        inputRef.current.blur()
+        mobileFocusRef.current?.focus()
+      }
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [mobileOpen, mounted, pages])
 
   useEffect(() => {
     // When items change, bounce the UI
@@ -132,7 +172,7 @@ const CommandMenu = memo(() => {
       <button
         className={headerStyles.command}
         title="⌘K"
-        onClick={() => setOpen(true)}
+        onClick={openCommand}
       >
         <CommandIcon />
       </button>
@@ -142,6 +182,7 @@ const CommandMenu = memo(() => {
         className={cn(styles.screen, {
           [styles.show]: rendered
         })}
+        initialFocusRef={mobileOpen ? mobileFocusRef : undefined}
         onDismiss={() => setOpen(false)}
       >
         <DialogContent
@@ -155,8 +196,13 @@ const CommandMenu = memo(() => {
               [styles.show]: rendered
             })}
           >
-            <div className={styles.top}>
+            <div
+              className={styles.top}
+              ref={mobileFocusRef}
+              tabIndex={mobileOpen ? -1 : undefined}
+            >
               <CommandInput
+                ref={inputRef}
                 placeholder={
                   Items === ThemeItems
                     ? 'Select a theme...'
@@ -273,7 +319,7 @@ const DefaultItems = () => {
       <Group title="Collection">
         <Item value="Reading" icon={<Book />} keybind="g r" />
         <Item value="Design" icon={<Design />} keybind="g d" />
-        <Item value="Keyboards" icon={<M6 />} keybind="g k" />
+        <Item value="Analog Film" icon={<Camera />} keybind="g f" />
         <Item value="Music" icon={<Music />} keybind="g m" />
         <Item value="Projects" icon={<Document />} keybind="g p" />
         <Item value="Quotes" icon={<Quote />} keybind="g q" />

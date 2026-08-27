@@ -25,7 +25,7 @@ const Projects = () => {
             description={`${project.status} — ${project.description}`}
             image={project.image}
             href={project.href}
-            position="top"
+            position={project.position || 'top'}
           />
         ))}
 

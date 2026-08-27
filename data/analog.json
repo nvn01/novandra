@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "title": "Fuji 200",
+      "slug": "fuji-200"
+    },
+    {
+      "title": "KCP 200",
+      "slug": "kcp-200"
+    },
+    {
+      "title": "Fomapan 200",
+      "slug": "fomapan-200"
+    },
+    {
+      "title": "Candido 400",
+      "slug": "candido-400"
+    },
+    {
+      "title": "Kodak Gold",
+      "slug": "kodak-gold"
+    }
+  ]
+}

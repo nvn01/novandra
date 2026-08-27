@@ -1,12 +1,15 @@
 {
   "name": "Novandra Anugrah",
   "location": "Tangerang Selatan, Indonesia",
-  "headline": "I build software that turns scattered data into useful products.",
-  "summary": "Final-year Computer Science student working across backend systems, applied AI, data collection, and self-hosted infrastructure.",
+  "headline": "I build software from ideas that used to stay in my head because they felt too big to take on alone.",
+  "summary": "Final-year Computer Science student building web, mobile, and AI products — with a focus on design, data mining, and systems integration for business operations needs.",
   "now": [
-    "Building and maintaining data-intensive products, including RECON, Tanya Pajak AI, and Bubbles IDX.",
-    "Exploring reliable data ingestion, useful AI interfaces, and the infrastructure required to run software beyond a local machine."
+    "Currently building RECON, Tanya Pajak AI, and Bubbles IDX while growing offpixel Studio, with app-pixel for business systems and Repixel for websites and design."
   ],
+  "studio": {
+    "name": "offpixel Studio",
+    "description": "an independent studio building business systems, integrations, websites, and digital design through app-pixel and Repixel"
+  },
   "links": {
     "github": "https://github.com/nvn01",
     "linkedin": "https://id.linkedin.com/in/novandra-anugrah-b55500211",

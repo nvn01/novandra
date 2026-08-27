@@ -14,8 +14,8 @@ const TextEntry = ({ title, description, type, comment, href, as }) => {
         title={`${title} (${description})`}
         className={styles.link}
       >
-        <div className={styles.type}>{type}</div>
-        <div>
+        {type && <div className={styles.type}>{type}</div>}
+        <div className={styles.content}>
           <p className={cn(styles.title, 'clamp')}>{title}</p>
           {description && (
             <p className={cn(styles.description, 'clamp')}>{description}</p>

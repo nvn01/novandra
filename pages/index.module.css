@@ -58,15 +58,20 @@
   color: var(--home-link);
 }
 
-.contentGrid {
+.contentGridShell {
   position: relative;
   left: 50%;
-  display: grid;
   width: 100vw;
+  margin: 64px 0 28px -50vw;
+}
+
+.contentGrid {
+  display: grid;
+  width: 100%;
   grid-template-columns: repeat(3, 192px);
   justify-content: center;
   gap: 32px;
-  margin: 64px 0 28px -50vw;
+  margin: 0;
   padding: 0 24px 40px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
@@ -74,6 +79,10 @@
 }
 
 .contentGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollIndicator {
   display: none;
 }
 
@@ -153,14 +162,82 @@
 }
 
 @media (max-width: 720px) {
+  .contentGridShell::before,
+  .contentGridShell::after {
+    position: absolute;
+    top: 0;
+    bottom: 40px;
+    z-index: 1;
+    width: 56px;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease;
+  }
+
+  .contentGridShell::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg), transparent);
+  }
+
+  .contentGridShell::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg), transparent);
+  }
+
+  .contentGridShell[data-can-scroll-left='true']::before,
+  .contentGridShell[data-can-scroll-right='true']::after {
+    opacity: 1;
+  }
+
   .contentGrid {
     grid-template-columns: repeat(3, 192px);
     justify-content: start;
     scroll-padding-inline: 24px;
     scroll-snap-type: inline proximity;
+    touch-action: pan-x pan-y;
   }
 
   .column {
     scroll-snap-align: start;
+  }
+
+  .scrollIndicator {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    z-index: 2;
+    display: block;
+    width: 64px;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--home-meta) 42%, transparent);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%);
+    transition: opacity 180ms ease;
+  }
+
+  .scrollIndicatorVisible {
+    opacity: 1;
+  }
+
+  .scrollIndicatorThumb {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--home-link);
+    transition: width 100ms ease;
+    will-change: transform;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contentGridShell::before,
+  .contentGridShell::after,
+  .scrollIndicator,
+  .scrollIndicatorThumb {
+    transition: none;
   }
 }

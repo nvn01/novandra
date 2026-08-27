@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Page from '@components/page'
 import Link from '@components/link'
 import { ArrowUpRight } from '@components/icons'
@@ -6,6 +7,114 @@ import profile from '@data/profile.json'
 import portfolio from '@data/portfolio.json'
 import publications from '@data/publications.json'
 import styles from './index.module.css'
+
+const SCROLL_TRACK_WIDTH = 64
+
+const ScrollableContentGrid = ({ children }) => {
+  const scrollerRef = useRef()
+  const idleTimerRef = useRef()
+  const [scrollState, setScrollState] = useState({
+    canScrollLeft: false,
+    canScrollRight: false,
+    progress: 0,
+    thumbWidth: SCROLL_TRACK_WIDTH,
+    indicatorVisible: false
+  })
+
+  const updateScrollState = useCallback(showIndicator => {
+    const scroller = scrollerRef.current
+    if (!scroller) return
+
+    const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth)
+    const progress = maxScroll ? scroller.scrollLeft / maxScroll : 0
+    const thumbWidth = maxScroll
+      ? Math.max(
+          22,
+          Math.round(
+            SCROLL_TRACK_WIDTH * (scroller.clientWidth / scroller.scrollWidth)
+          )
+        )
+      : SCROLL_TRACK_WIDTH
+
+    setScrollState(current => ({
+      canScrollLeft: scroller.scrollLeft > 2,
+      canScrollRight: scroller.scrollLeft < maxScroll - 2,
+      progress,
+      thumbWidth,
+      indicatorVisible: showIndicator ? maxScroll > 0 : current.indicatorVisible
+    }))
+  }, [])
+
+  const handleScroll = useCallback(() => {
+    updateScrollState(true)
+    window.clearTimeout(idleTimerRef.current)
+    idleTimerRef.current = window.setTimeout(() => {
+      setScrollState(current => ({
+        ...current,
+        indicatorVisible: false
+      }))
+    }, 700)
+  }, [updateScrollState])
+
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    if (!scroller) return undefined
+
+    updateScrollState(false)
+
+    const handleResize = () => updateScrollState(false)
+    const resizeObserver =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(handleResize)
+
+    if (resizeObserver) {
+      resizeObserver.observe(scroller)
+    } else {
+      window.addEventListener('resize', handleResize)
+    }
+
+    return () => {
+      window.clearTimeout(idleTimerRef.current)
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [updateScrollState])
+
+  const thumbTravel = SCROLL_TRACK_WIDTH - scrollState.thumbWidth
+  const thumbOffset = thumbTravel * scrollState.progress
+
+  return (
+    <div
+      className={styles.contentGridShell}
+      data-can-scroll-left={scrollState.canScrollLeft || undefined}
+      data-can-scroll-right={scrollState.canScrollRight || undefined}
+    >
+      <section
+        aria-label="Featured work"
+        className={styles.contentGrid}
+        onScroll={handleScroll}
+        ref={scrollerRef}
+      >
+        {children}
+      </section>
+      <div
+        aria-hidden="true"
+        className={`${styles.scrollIndicator} ${
+          scrollState.indicatorVisible ? styles.scrollIndicatorVisible : ''
+        }`}
+      >
+        <span
+          className={styles.scrollIndicatorThumb}
+          style={{
+            width: `${scrollState.thumbWidth}px`,
+            transform: `translate3d(${thumbOffset}px, 0, 0)`
+          }}
+        />
+      </div>
+    </div>
+  )
+}
 
 const About = ({ buildingProjects }) => {
   const featuredProjects = portfolio.featured
@@ -18,16 +127,13 @@ const About = ({ buildingProjects }) => {
   }
 
   return (
-    <Page home description={`${profile.headline} ${profile.summary}`}>
+    <Page home description={profile.summary}>
       <article className={styles.homeArticle}>
         <h1>{profile.name}</h1>
 
-        <p>
-          <em>{profile.headline}</em>
-        </p>
         <p>{profile.summary}</p>
 
-        <section className={styles.contentGrid}>
+        <ScrollableContentGrid>
           <div className={styles.column}>
             <h2>Building</h2>
             <ul>
@@ -129,25 +235,13 @@ const About = ({ buildingProjects }) => {
               </li>
             </ul>
           </div>
-        </section>
+        </ScrollableContentGrid>
 
         <section className={styles.readingSection}>
           <h2>Now</h2>
           {profile.now.map(item => (
             <p key={item}>{item}</p>
           ))}
-        </section>
-
-        <section className={styles.readingSection}>
-          <h2>About</h2>
-          <p>
-            My work sits between backend engineering, retrieval systems, data
-            ingestion, and infrastructure. Read the longer story on the{' '}
-            <Link underline href="/about">
-              about page
-            </Link>
-            .
-          </p>
         </section>
 
         <section className={styles.readingSection}>
