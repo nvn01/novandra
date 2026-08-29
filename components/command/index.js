@@ -110,7 +110,8 @@ const CommandMenu = memo(() => {
       // Collections
       'g r': () => router.push('/reading'),
       'g d': () => router.push('/design'),
-      'g f': () => router.push('/analog'),
+      'g f': () =>
+        window.location.assign('https://analog-film-novandra.vercel.app'),
       'g m': () => router.push('/music'),
       'g p': () => router.push('/projects'),
       'g q': () => router.push('/quotes'),
