@@ -18,6 +18,25 @@ const Projects = () => {
           backend systems, and infrastructure.
         </p>
 
+        <p>
+          Portfolio:{' '}
+          <Link
+            underline
+            href="/portfolio/novandra-anugrah-portfolio-en.pdf"
+            external
+          >
+            View PDF
+          </Link>{' '}
+          ·{' '}
+          <Link
+            underline
+            href="/portfolio/novandra-anugrah-portfolio-id.pdf"
+            external
+          >
+            Bahasa Indonesia
+          </Link>
+        </p>
+
         {portfolio.featured.map(project => (
           <Entry
             key={project.title}

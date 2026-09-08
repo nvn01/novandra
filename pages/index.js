@@ -190,9 +190,20 @@ const About = ({ buildingProjects }) => {
                     More Projects
                   </Link>
                 </div>
-                <p className={styles.itemDescription}>
-                  Data, infrastructure, and earlier work.
-                </p>
+              </li>
+              <li className={styles.item}>
+                <div className={styles.itemTitle}>
+                  <Link
+                    underline
+                    href="/portfolio/novandra-anugrah-portfolio-en.pdf"
+                    external
+                  >
+                    <span className={styles.externalLinkLabel}>
+                      View PDF
+                      <ArrowUpRight size={16} />
+                    </span>
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>
